@@ -6,10 +6,13 @@ import './Note.css'
 
 function Home() {
     const [notes, setNotes] = useState<Array<NoteInterface>>([]);
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
       axios.get('http://localhost:8080/notes').then((response) => {
         setNotes(response.data);
+      }).catch((error) => {
+        setErrorMessage(error.message);
       });
     }, []);
   
@@ -24,6 +27,7 @@ function Home() {
 
     return (
         <div className="notesContainer">
+            <span className="error">{errorMessage}</span>
             {notesDisplay}
             <Link to={'notes/create'}>Create New Note</Link>
         </div>
