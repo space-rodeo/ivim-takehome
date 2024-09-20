@@ -1,0 +1,13 @@
+body {
+  background-color: #282c34;
+  color: white;
+}
+
+a {
+  color: #61dafb;
+}
+
+.header {
+  font-size: calc(10px + 2vmin);
+}
+
